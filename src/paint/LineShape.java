@@ -2,6 +2,8 @@ package paint;
 
 import java.awt.*;
 
+import javax.swing.JPanel;
+
 public class LineShape extends Shape {
 
 	public LineShape(String name, int x1, int x2, int y1, int y2) {
@@ -13,4 +15,7 @@ public class LineShape extends Shape {
     	super.paint(g);
         g.drawLine(x1, y1, x2, y2);
     }
+    
+	JPanel j=new JPanel();
+	Graphics g=j.getGraphics();
 }

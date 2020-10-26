@@ -1,5 +1,8 @@
 package paint;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -14,42 +17,23 @@ import javax.swing.*;
  * 6）保存到文件
  */
 
-public class PaintBoard extends JFrame implements ActionListener {
+public class PaintBoard extends JFrame {
 	public PaintBoard(){
-		super("画图板");
-//		JPanel p1= new JPanel();
-//		add(p1,BorderLayout.WEST);
-//		p1.add(new JButton("直线"));
-//		p1.add(new JButton("矩形"));
-//		p1.add(new JButton("圆形"));
-//		p1.add(new JButton("多边形"));
 		
-		Box b1=Box.createVerticalBox();
-		b1.add(new JButton("直线"));
-		b1.add(b1.createVerticalStrut(10));
-		b1.add(new JButton("矩形"));
-		b1.add(b1.createVerticalStrut(10));
-		b1.add(new JButton("圆形"));
-		b1.add(b1.createVerticalStrut(10));
-		b1.add(new JButton("多边形"));
-		b1.add(b1.createVerticalStrut(10));
-		add(b1);
-		
-		setSize(640,480);
-		setVisible(true);
-		setResizable(true);
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void paint(Graphics g) {
 		
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		PaintBoard pic = new PaintBoard();
+		Board pic = new Board();
 //		pic.setTitle("画图板");
+		
+		JPanel j=new JPanel();
+		Graphics g=j.getGraphics();
+		
 		pic.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(1);

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,7 +27,7 @@ public class Board extends JFrame{
 	Box b=Box.createVerticalBox();
 	b.setBackground(Color.gray);
 	add(b,BorderLayout.WEST);	
-	String btname[]= {"直线","矩形","圆形","弧线"};
+	String btname[]= {"直线","曲线","圆形","矩形"};
 	int i;
 	for(i=0;i<btname.length;i++) {
 		JButton button=new JButton(btname[i]);
@@ -56,12 +57,13 @@ public class Board extends JFrame{
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	
 	Graphics g = this.getGraphics();//画笔
+	el.setG(g);//传参使用画笔
 	this.addMouseListener(el);
 	this.addMouseMotionListener(el);
 }
  
     public void paint(Graphics g) {
 		super.paint(g);
-		
+        		
 	}
 }

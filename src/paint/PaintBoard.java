@@ -23,7 +23,7 @@ import javax.swing.JPanel;
  * 6）保存到文件
  */
 
-public class PaintBoard extends JFrame implements ActionListener{
+public class PaintBoard extends JFrame{
 	public PaintBoard(){
 //		JFrame f1= new JFrame();
 //		EventListener el=new EventListener();
@@ -66,24 +66,20 @@ public class PaintBoard extends JFrame implements ActionListener{
 //		setDefaultCloseOperation(EXIT_ON_CLOSE);
 //		
 //		Graphics g = this.getGraphics();
+//		el.setG(g);
 //		this.addMouseListener(el);
 //		this.addMouseMotionListener(el);
 	}
-
 	
 	public void paint(Graphics g) {
 		
 	}
-	
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Board pic = new Board();
+//		PaintBoard pic1 = new PaintBoard();
 
 	}
 

@@ -11,11 +11,12 @@ public class LineShape extends Shape {
 		// TODO Auto-generated constructor stub
 	}
 	
-    public void Paint(Graphics g) {
-    	super.paint(g);
-        g.drawLine(x1, y1, x2, y2);
-    }
+//    public void Paint(Graphics g) {
+//    	super.paint(g);
+//        g.drawLine(x1, y1, x2, y2);
+//    }
     
-	JPanel j=new JPanel();
-	Graphics g=j.getGraphics();
+    public void repaint() {
+    	
+    }
 }

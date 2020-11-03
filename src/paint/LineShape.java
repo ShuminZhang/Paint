@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 
 public class LineShape extends Shape {
 
-	public LineShape(String name, int x1, int x2, int y1, int y2) {
-		super(name, x1, x2, y1, y2);
+	public LineShape(String name,Color color, int x1, int y1, int x2, int y2) {
+		super(name, color, x1, y1, x2, y2);
 		// TODO Auto-generated constructor stub
 	}
 	

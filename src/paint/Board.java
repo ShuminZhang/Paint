@@ -64,6 +64,6 @@ public class Board extends JFrame{
  
     public void paint(Graphics g) {
 		super.paint(g);
-        		
+       		
 	}
 }

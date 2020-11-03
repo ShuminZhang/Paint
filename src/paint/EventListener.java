@@ -15,6 +15,7 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 	private String shape; //记录图形
 	private Color color;  //记录颜色
 	Vector <Shape> sh_vec; //存放图形
+	Shape p; //存放作图数据
 	
 	public void setG(Graphics g) {
 		g1=g;
@@ -42,18 +43,48 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 	@Override
 	public void mousePressed(MouseEvent e1) {
 		g1.setColor(color);
-		x1=e1.getX();
-		y1=e1.getY();
+		if(flag==1) {
+			x1=e1.getX();
+			y1=e1.getY();
+		}
+		
 	}
 	
 	@Override
 	public void mouseReleased(MouseEvent e1) {
 		x2=e1.getX();
 		y2=e1.getY();
-		if (shape.equals("直线")) {
-			g1.drawLine(x1, y1,x2,y2);
+		if (shape.equals("直线")&&flag==1) {
+//			g1.drawLine(x1, y1,x2,y2);
+			p=new Shape(shape,color,x1,y1,x2,y2);
+			p.paint(g1);
+		}
+		else if(shape.equals("圆形")&&flag==1) {
+			p=new Shape(shape,color,x1,y1,x2,y2);
+			p.paint(g1);
 		}
 	}
+	
+	@Override
+	public void mouseDragged(MouseEvent e1) {
+		// TODO Auto-generated method stub
+		if(shape.equals("曲线")&&flag==1){
+			x2=x1;
+			y2=y1;
+			x1=e1.getX();
+			y1=e1.getY();
+//			g1.drawLine(x1, y1, x2, y2);
+			p=new Shape(shape,color,x1,y1,x2,y2);
+			p.paint(g1);
+		}
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	@Override
 	public void mouseEntered(MouseEvent e1) {
@@ -66,24 +97,4 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 		// TODO Auto-generated method stub
 		
 	}
-	
-	@Override
-	public void mouseDragged(MouseEvent e1) {
-		// TODO Auto-generated method stub
-		if(shape.equals("曲线")){
-			x2=x1;
-			y2=y1;
-			x1=e1.getX();
-			y1=e1.getY();
-			g1.drawLine(x1, y1, x2, y2);
-		}
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 }

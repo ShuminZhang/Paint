@@ -7,7 +7,7 @@ import java.util.Vector;
 import javax.swing.*;
 
 public class EventListener extends MouseAdapter implements ActionListener,MouseListener, MouseMotionListener {
-	private int x1=0,x2=0,y1=0,y2=0;
+	private int x1=0,x2=0,x3=0,y1=0,y2=0,y3=0;
 	
 //	private JPanel j1;
 	private int flag=1; //步骤标记
@@ -37,7 +37,16 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 	@Override
 	public void mouseClicked(MouseEvent e1) {
 		// TODO Auto-generated method stub
-		
+		if(shape.equals("多边形")&&flag==2) {
+			p=new Shape(shape,color,x2,y2,x3,y3);
+			p.paint(g1);
+			x2=x3;
+			y2=y3;
+		}
+		if(e1.getClickCount()==2) {
+			p=new Shape(shape,color,x1,y1,x3,y3);
+			p.paint(g1);
+		}
 	}
 	
 	@Override
@@ -47,7 +56,6 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 			x1=e1.getX();
 			y1=e1.getY();
 		}
-		
 	}
 	
 	@Override
@@ -62,6 +70,15 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 		else if(shape.equals("圆形")&&flag==1) {
 			p=new Shape(shape,color,x1,y1,x2,y2);
 			p.paint(g1);
+		}
+		else if(shape.equals("矩形")&&flag==1) {
+			p=new Shape(shape,color,x1,y1,x2,y2);
+			p.paint(g1);
+		}
+		else if(shape.equals("多边形")&&flag==1) {
+			p=new Shape(shape,color,x1,y1,x2,y2);
+			p.paint(g1);
+			flag++;
 		}
 	}
 	

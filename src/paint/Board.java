@@ -27,7 +27,7 @@ public class Board extends JFrame{
 	Box b=Box.createVerticalBox();
 	b.setBackground(Color.gray);
 	add(b,BorderLayout.WEST);	
-	String btname[]= {"直线","曲线","圆形","矩形"};
+	String btname[]= {"直线","曲线","圆形","矩形","多边形"};
 	int i;
 	for(i=0;i<btname.length;i++) {
 		JButton button=new JButton(btname[i]);

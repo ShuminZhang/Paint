@@ -37,15 +37,20 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 	@Override
 	public void mouseClicked(MouseEvent e1) {
 		// TODO Auto-generated method stub
+		x3=e1.getX();
+		y3=e1.getY();
 		if(shape.equals("多边形")&&flag==2) {
-			p=new Shape(shape,color,x2,y2,x3,y3);
-			p.paint(g1);
+//			p=new Shape(shape,color,x2,y2,x3,y3);
+//			p.paint(g1);
+			g1.drawLine(x2, y2, x3, y3);
 			x2=x3;
 			y2=y3;
-		}
-		if(e1.getClickCount()==2) {
-			p=new Shape(shape,color,x1,y1,x3,y3);
-			p.paint(g1);
+			
+			if(e1.getClickCount()==2) {
+				p=new Shape(shape,color,x1,y1,x3,y3);
+			    p.paint(g1);
+			    flag=1;
+		    }
 		}
 	}
 	
@@ -60,8 +65,11 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 	
 	@Override
 	public void mouseReleased(MouseEvent e1) {
-		x2=e1.getX();
-		y2=e1.getY();
+		if(flag==1) {
+			x2=e1.getX();
+			y2=e1.getY();
+		}
+		
 		if (shape.equals("直线")&&flag==1) {
 //			g1.drawLine(x1, y1,x2,y2);
 			p=new Shape(shape,color,x1,y1,x2,y2);
@@ -76,8 +84,9 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 			p.paint(g1);
 		}
 		else if(shape.equals("多边形")&&flag==1) {
-			p=new Shape(shape,color,x1,y1,x2,y2);
-			p.paint(g1);
+//			p=new Shape(shape,color,x1,y1,x2,y2);
+//			p.paint(g1);
+			g1.drawLine(x1, y1, x2, y2);
 			flag++;
 		}
 	}

@@ -25,61 +25,62 @@ import javax.swing.JPanel;
 
 public class PaintBoard extends JFrame{
 	public PaintBoard(){
-//		JFrame f1= new JFrame();
-//		EventListener el=new EventListener();
-//		
-//		JPanel p1=new JPanel();
-//		p1.setBackground(Color.WHITE);
-//		add(p1,BorderLayout.CENTER);
-//		
-//		Box b=Box.createVerticalBox();
-//		b.setBackground(Color.gray);
-//		add(b,BorderLayout.WEST);
-//		
-//		String btname[]= {"直线","矩形","圆形","弧线"};
-//		int i;
-//		for(i=0;i<btname.length;i++) {
-//			JButton button=new JButton(btname[i]);
-////			button.setPreferredSize(new Dimension(200,70));
-//			b.add(button);
-//			button.addActionListener(el);
-//		}	
-//		
-//		JPanel p2=new JPanel();
-//		p2.setBackground(Color.gray);
-//		add(p2,BorderLayout.NORTH);
-////		Box b=Box.createVerticalBox();
-////		b.setBackground(Color.gray);
-////		add(b,BorderLayout.WEST);
-//		Color colorname[]= {Color.WHITE,Color.BLACK,Color.CYAN,Color.RED,Color.GREEN,Color.YELLOW};
-//		for(i=0;i<colorname.length;i++) {
-//			JButton button=new JButton();
-//			button.setBackground(colorname[i]);
-//			button.setPreferredSize(new Dimension(30,30));
-//			p2.add(button);
-//			button.addActionListener(el);
-//		}
-//		setSize(640,480);
-//		setTitle("画图板");
-//		setVisible(true);
-//		setResizable(true);
-//		setDefaultCloseOperation(EXIT_ON_CLOSE);
-//		
-//		Graphics g = this.getGraphics();
-//		el.setG(g);
-//		this.addMouseListener(el);
-//		this.addMouseMotionListener(el);
+		JFrame f1= new JFrame();
+		EventListener el=new EventListener();//实例化一个EventLiatener,实现多个接口
+		
+		//画板
+		JPanel p1=new JPanel();
+		p1.setBackground(Color.WHITE);
+		add(p1,BorderLayout.CENTER);  
+		
+		//工具栏
+		Box b=Box.createVerticalBox();
+		b.setBackground(Color.gray);
+		add(b,BorderLayout.WEST);	
+		String btname[]= {"直线","曲线","圆形","矩形","多边形"};
+		int i;
+		for(i=0;i<btname.length;i++) {
+			JButton button=new JButton(btname[i]);
+//			button.setPreferredSize(new Dimension(200,70));
+			b.add(button);
+			button.addActionListener(el);
+		}	
+		
+		//颜色栏
+		JPanel p2=new JPanel();
+		p2.setBackground(Color.gray);
+		add(p2,BorderLayout.NORTH);
+		Color colorname[]= {Color.WHITE,Color.BLACK,Color.CYAN,Color.RED,Color.GREEN,Color.YELLOW};
+		for(i=0;i<colorname.length;i++) {
+			JButton button=new JButton();
+			button.setBackground(colorname[i]);
+			button.setPreferredSize(new Dimension(30,30));
+			p2.add(button);
+			button.addActionListener(el);
+		}
+		
+		//窗口设置
+		setSize(640,480);
+		setTitle("画图板");
+		setVisible(true);
+		setResizable(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		Graphics g = this.getGraphics();//画笔
+		el.setG(g);//传参使用画笔
+		this.addMouseListener(el);
+		this.addMouseMotionListener(el);
 	}
 	
 	public void paint(Graphics g) {
-		
+		super.paint(g);
 	}
 
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Board pic = new Board();
-//		PaintBoard pic1 = new PaintBoard();
+
+		PaintBoard pic1 = new PaintBoard();
 
 	}
 

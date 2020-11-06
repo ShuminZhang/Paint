@@ -5,12 +5,12 @@ import java.awt.Graphics;
 
 public class Shape {
 
-	private String shape;
-	private Color color;
-	private int x1;
-	private int x2;
-	private int y1;
-	private int y2;
+	protected String shape;
+	protected Color color;
+	protected int x1;
+	protected int x2;
+	protected int y1;
+	protected int y2;
 	
 	public Shape(String shape,Color color,int x1,int y1,int x2,int y2) {
 		this.shape=shape;

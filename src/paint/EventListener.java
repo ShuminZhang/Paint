@@ -15,7 +15,6 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 	private String shape; //记录图形名字
 	private Color color;  //记录颜色
 	private Vector <Shape> vec; //存放图形
-	private int count; //记录图形个数
 	Shape p; //存放作图数据
 	
 	public void setG(Graphics g) {

@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Vector;
 import java.awt.*;
 
 import javax.swing.Box;
@@ -24,7 +25,10 @@ import javax.swing.JPanel;
  */
 
 public class PaintBoard extends JFrame{
+	Vector <Shape> sh_vec=new Vector<Shape>();//存放画出的图形信息
+	
 	public PaintBoard(){
+		super("画图板");
 		JFrame f1= new JFrame();
 		EventListener el=new EventListener();//实例化一个EventLiatener,实现多个接口
 		
@@ -50,7 +54,7 @@ public class PaintBoard extends JFrame{
 		JPanel p2=new JPanel();
 		p2.setBackground(Color.gray);
 		add(p2,BorderLayout.NORTH);
-		Color colorname[]= {Color.WHITE,Color.BLACK,Color.CYAN,Color.RED,Color.GREEN,Color.YELLOW};
+		Color colorname[]= {Color.WHITE,Color.BLACK,Color.BLUE,Color.RED,Color.GREEN,Color.YELLOW,Color.MAGENTA};
 		for(i=0;i<colorname.length;i++) {
 			JButton button=new JButton();
 			button.setBackground(colorname[i]);
@@ -61,7 +65,7 @@ public class PaintBoard extends JFrame{
 		
 		//窗口设置
 		setSize(640,480);
-		setTitle("画图板");
+//		setTitle("画图板");
 		setVisible(true);
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -70,10 +74,22 @@ public class PaintBoard extends JFrame{
 		el.setG(g);//传参使用画笔
 		this.addMouseListener(el);
 		this.addMouseMotionListener(el);
+		
+		//存放图形
+		el.setVector(sh_vec);
 	}
 	
+	//重写paint方法，使得窗口变化时图画保留
 	public void paint(Graphics g) {
 		super.paint(g);
+		for(int i=0;i<sh_vec.size();i++) {
+			if(sh_vec.get(i)!=null) {
+				sh_vec.get(i).repaint(g);
+			}
+			else {
+				break;
+			}
+		}
 	}
 
 

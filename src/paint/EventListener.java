@@ -14,11 +14,17 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 	private Graphics g1;  //画笔
 	private String shape; //记录图形
 	private Color color;  //记录颜色
-	Vector <Shape> sh_vec; //存放图形
+	private Vector <Shape> vec; //存放图形
+	private int count; //记录图形个数
 	Shape p; //存放作图数据
 	
 	public void setG(Graphics g) {
 		g1=g;
+	}
+	
+	public void setVector(Vector sh_vec) {
+		// TODO Auto-generated method stub
+		vec=sh_vec;
 	}
 	
 	@Override
@@ -40,15 +46,18 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 		x3=e1.getX();
 		y3=e1.getY();
 		if(shape.equals("多边形")&&flag==2) {
-//			p=new Shape(shape,color,x2,y2,x3,y3);
-//			p.paint(g1);
-			g1.drawLine(x2, y2, x3, y3);
+			p=new Shape(shape,color,x2,y2,x3,y3);
+			p.repaint(g1);
+//			g1.drawLine(x2, y2, x3, y3);
+			vec.add(p);
 			x2=x3;
 			y2=y3;
 			
 			if(e1.getClickCount()==2) {
+//				g1.drawLine(x1, y1, x3, y3);
 				p=new Shape(shape,color,x1,y1,x3,y3);
-			    p.paint(g1);
+			    p.repaint(g1);
+			    vec.add(p);
 			    flag=1;
 		    }
 		}
@@ -73,20 +82,26 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 		if (shape.equals("直线")&&flag==1) {
 //			g1.drawLine(x1, y1,x2,y2);
 			p=new Shape(shape,color,x1,y1,x2,y2);
-			p.paint(g1);
+			p.repaint(g1);
+			vec.add(p);//将直线图形的颜色、坐标信息存放如vector中
+			
 		}
 		else if(shape.equals("圆形")&&flag==1) {
+			g1.drawOval(Math.min(x1,x2), Math.min(y1,y2), Math.abs(x1-x2), Math.abs(y1-y2));
 			p=new Shape(shape,color,x1,y1,x2,y2);
-			p.paint(g1);
+			p.repaint(g1);
+			vec.add(p);
 		}
 		else if(shape.equals("矩形")&&flag==1) {
 			p=new Shape(shape,color,x1,y1,x2,y2);
-			p.paint(g1);
+			p.repaint(g1);
+			vec.add(p);
 		}
 		else if(shape.equals("多边形")&&flag==1) {
-//			p=new Shape(shape,color,x1,y1,x2,y2);
+			p=new Shape(shape,color,x1,y1,x2,y2);
 //			p.paint(g1);
 			g1.drawLine(x1, y1, x2, y2);
+			vec.add(p);
 			flag++;
 		}
 	}
@@ -101,7 +116,8 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 			y1=e1.getY();
 //			g1.drawLine(x1, y1, x2, y2);
 			p=new Shape(shape,color,x1,y1,x2,y2);
-			p.paint(g1);
+			p.repaint(g1);
+			vec.add(p);
 		}
 	}
 
@@ -123,4 +139,5 @@ public class EventListener extends MouseAdapter implements ActionListener,MouseL
 		// TODO Auto-generated method stub
 		
 	}
+
 }

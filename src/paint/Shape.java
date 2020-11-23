@@ -21,20 +21,20 @@ public class Shape {
 		this.y2=y2;	
 	}
 
-	public void paint(Graphics g) {
-//		super.paint(g);
+	public void repaint(Graphics g) {
 		switch(shape){
-		case "直线":g.drawLine(x1, y1, x2, y2);break;//repaint();}
-		case "曲线":g.drawLine(x1, y1, x2, y2);break;
-		case "圆形":g.drawOval(Math.min(x1,x2), Math.min(y1,y2), Math.abs(x1-x2), Math.abs(y1-y2));
-		           break;
-		case "矩形":g.drawRect(Math.min(x1, x2), Math.min(y1 ,y2), Math.abs(x1-x2), Math.abs(y1-y2));
-		           break;
-		case "多边形":g.drawLine(x1, y1, x2, y2);break;
+		case "直线":{g.setColor(color);g.drawLine(x1, y1, x2, y2);}break;
+		case "曲线":{g.setColor(color);g.drawLine(x1, y1, x2, y2);}break;
+		case "圆形":{g.setColor(color);
+		            g.drawOval(Math.min(x1,x2), Math.min(y1,y2), Math.abs(x1-x2), Math.abs(y1-y2));
+		           } 
+		          break;
+		case "矩形":{g.setColor(color);
+		            g.drawRect(Math.min(x1, x2), Math.min(y1 ,y2), Math.abs(x1-x2), Math.abs(y1-y2));
+		           }
+		          break;
+		case "多边形":{g.setColor(color);g.drawLine(x1, y1, x2, y2);}break;
 		}
 	}
 	
-	public void repaint() {
-		
-		}
 }
